@@ -1,6 +1,7 @@
 package org.example.jsonplaceholderclient.autoconfigure;
 
 import org.example.jsonplaceholderclient.JsonPlaceHolderClient;
+import org.example.jsonplaceholderclient.JsonPlaceHolderClientConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -15,7 +16,15 @@ public class JsonPlaceHolderClientConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public JsonPlaceHolderClient jsonPlaceHolderClient(JsonPlaceHolderClientProperties jsonPlaceHolderClientProperties) {
-        return new JsonPlaceHolderClient(jsonPlaceHolderClientProperties.getServer());
+    public JsonPlaceHolderClientConfig jsonPlaceHolderClientConfig(JsonPlaceHolderClientProperties jsonPlaceHolderClientProperties) {
+        JsonPlaceHolderClientConfig config = new JsonPlaceHolderClientConfig();
+        config.setServerUrl(jsonPlaceHolderClientProperties.getServer());
+        return config;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public JsonPlaceHolderClient jsonPlaceHolderClient(JsonPlaceHolderClientConfig jsonPlaceHolderClientConfig) {
+        return new JsonPlaceHolderClient(jsonPlaceHolderClientConfig);
     }
 }

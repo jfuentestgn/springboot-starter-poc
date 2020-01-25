@@ -19,7 +19,7 @@ public class UserController {
     public ModelAndView showUser(@PathVariable String id) {
         ModelAndView mv = new ModelAndView("main/show");
         mv.addObject("id", id);
-        mv.addObject("user", demoService.getUserName(Integer.parseInt(id)));
+        mv.addObject("user", demoService.getUserInfo(Integer.parseInt(id)));
         return mv;
     }
 }

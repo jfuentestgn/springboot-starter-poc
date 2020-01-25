@@ -17,4 +17,8 @@ public class DemoService {
         User user = this.jsonPlaceHolderClient.getUser(userId);
         return user.getName();
     }
+
+    public User getUserInfo(int userId) {
+        return this.jsonPlaceHolderClient.getUser(userId);
+    }
 }
