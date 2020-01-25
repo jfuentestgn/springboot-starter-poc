@@ -8,7 +8,9 @@ public class JsonPlaceHolderClientUnitTest {
 
     @Test
     public void testGetUser() {
-        JsonPlaceHolderClient client = new JsonPlaceHolderClient("https://jsonplaceholder.typicode.com");
+        JsonPlaceHolderClientConfig config = new JsonPlaceHolderClientConfig();
+        config.setServerUrl("https://jsonplaceholder.typicode.com");
+        JsonPlaceHolderClient client = new JsonPlaceHolderClient(config);
         User u = client.getUser(1);
 
         assertEquals("Leanne Graham", u.getName());
