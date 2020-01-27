@@ -21,3 +21,5 @@ The main purpose is create framework independent components to be freely integra
 * **grailsapp-w-plugin-wo-starter**: Grails 4 application with grils plugin that does not depend on Spring Boot Starter. Plugin integrates 3rd party library directly in its `doWithSpring()` method
 
 * **graislapp-w-resources**: Grails 4 application that integrates 3rd party library using `spring/resources.groovy`
+
+* **springapp-groovy**: The same as `springapp` but using Groovy instead of Java. It depends on *Groovy Markup* as the template engine
