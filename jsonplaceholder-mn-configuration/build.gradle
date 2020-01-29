@@ -1,0 +1,60 @@
+plugins {
+    id "net.ltgt.apt-eclipse" version "0.21"
+    id "com.github.johnrengelman.shadow" version "5.0.0"
+    id "application"
+
+    id 'java'
+    id 'maven-publish'
+}
+
+
+version "0.1"
+group "org.example"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://jcenter.bintray.com" }
+}
+
+configurations {
+    // for dependencies that are needed for development only
+    developmentOnly 
+}
+
+dependencies {
+    annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    annotationProcessor "io.micronaut:micronaut-validation"
+    implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
+    implementation "io.micronaut:micronaut-inject"
+    
+    implementation "org.example:jsonplaceholderclient:1.0-SNAPSHOT"
+}
+
+test.classpath += configurations.developmentOnly
+
+mainClassName="org.example.jsonplaceholder.micronaut.JsoonPlaceHolderClientFactory"
+
+// use JUnit 5 platform
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+    options.compilerArgs.add('-parameters')
+}
+
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
