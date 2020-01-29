@@ -23,3 +23,7 @@ The main purpose is create framework independent components to be freely integra
 * **graislapp-w-resources**: Grails 4 application that integrates 3rd party library using `spring/resources.groovy`
 
 * **springapp-groovy**: The same as `springapp` but using Groovy instead of Java. It depends on *Groovy Markup* as the template engine
+
+* **micronaut-configuration**: Micronaut configuration module that integrates 3rd party library into micronaut context
+
+* **micronautapp**: Micronaut application that uses `micronaut-configuration` module
