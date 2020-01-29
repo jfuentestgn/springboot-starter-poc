@@ -1,0 +1,5 @@
+micronaut:
+  application:
+    name: micronaut-app-test
+jsonplaceholderclient:
+  server: http://jsonplaceholder.typicode.com
